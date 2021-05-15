@@ -1,48 +1,41 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <!-- <HelloWorld :msg="headingName + ' Igloo'"/> -->
-    <button @click="lodashTest">{{btnName}}</button>
-    <button :class="myClass" @click="changeTitle">ChangeTitle</button>
-    <Avatar :username="headingName + ' Igloo'"></Avatar>
-    <CommentHolder></CommentHolder>
+  <div id="app" class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/#/hello">HelloWorld <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <router-link to="/comments" class="nav-link">Comments</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/avatar" class="nav-link">Avatar</router-link>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-import lodash from 'lodash'
-import Avatar from 'vue-avatar'
-import CommentHolder from './components/CommentHolder'
-
 export default {
   name: 'App',
-  components: {
-    // HelloWorld,
-    Avatar,
-    CommentHolder
-  },
-  data() {
-    return {
-      btnName: "Lodash Other",
-      headingName: "Hello World",
-      myClass: "btn-red"
-    }
-  },
-  methods: {
-    lodashTest() {
-      let [oddArr, evenArr ] = lodash.partition([1, 2, 3, 4], n => n === 3);
-      console.log('three', oddArr);
-      console.log('rest', evenArr);
-
-      this.btnName = "You Clicked Me"
-    },
-    changeTitle(){
-      this.headingName = "New Heading Name"
-      this.myClass = "btn-green"
-    }
-  },
-}
+};
 </script>
 
 <style>
@@ -55,12 +48,10 @@ export default {
   margin-top: 60px;
 }
 
-.btn-red{
+.btn-red {
   color: red;
 }
-.btn-green{
+.btn-green {
   color: green;
 }
-
-
 </style>

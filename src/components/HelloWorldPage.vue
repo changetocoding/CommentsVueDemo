@@ -1,16 +1,21 @@
 <template>
-  <div class="hello">
-    <div :class="headerClass">
-      <h1>{{ msg }}</h1>
-      <h1>{{ internalMsg }}</h1>
-      <h1>{{ computedMsg }}</h1>
+  <div>
+    <img alt="Vue logo" src="../assets/logo.png" />
+    <div class="hello">
+      <div :class="headerClass">
+        <h1>{{ msg }}</h1>
+        <h1>{{ internalMsg }}</h1>
+        <h1>{{ computedMsg }}</h1>
+      </div>
+      <input type="text" v-model="fullName" />
+      <p>
+        For a guide and recipes on how to configure / customize this project,<br />
+        check out the
+        <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
+      </p>
     </div>
-    <input type="text" v-model="fullName" />
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br />
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
+
+    <button class="btn btn-red" @click="goToAvatar">See My Avatar</button>
   </div>
 </template>
 
@@ -29,7 +34,7 @@ export default {
   },
   computed: {
     headerClass() {
-      return this.fullName.split(' ').length >  2 ? 'warning' : 'good';
+      return this.fullName.split(' ').length > 2 ? 'warning' : 'good';
     },
     computedMsg() {
       return this.internalMsg + ' ' + this.msg;
@@ -46,6 +51,11 @@ export default {
         this.lastName = names[names.length - 1];
       },
     },
+  },
+  methods: {
+    goToAvatar() {
+      this.$router.push('/avatar/' + this.fullName)
+    }
   },
 };
 </script>

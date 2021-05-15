@@ -28,7 +28,7 @@ export default {
     onNewEvent(val) {
       var id = this.nextId++;
       this.list.push({ id: id, message: val })
-    }
+    },
   },
 };
 </script>
